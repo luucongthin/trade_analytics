@@ -1,0 +1,197 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                        Quản lý quền truy cập
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-wrapper">
+                        <a href="#" class="btn btn-clean btn-icon-sm">
+                            <i class="la la-long-arrow-left"></i>
+                            Back
+                        </a>
+                        &nbsp;
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-danger" ng-if="vm.deleteManyItem">
+                                <i class="la la-trash"></i> Delete selected
+                            </button>
+                        </div>
+                        &nbsp;
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-brand btn-icon-sm" ng-click="vm.addNewItem()">
+                                <i class="la la-plus"></i> Add New
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+
+                <!--begin: Search Form -->
+                <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 order-2 order-xl-1">
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <div class="kt-form__group">
+                                        <div class="kt-form__label">
+                                            <label>Search:</label>
+                                        </div>
+                                        <div class="kt-form__control kt-input-icon kt-input-icon--left">
+                                            <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                                            <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                                <span><i class="la la-search"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="kt-form__group">
+                                        <div class="kt-form__control kt-form__control_btn">
+                                            <button type="button" class="btn btn-brand btn-icon-sm">
+                                                <i class="la la-search"></i> 
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end: Search Form -->
+            </div>
+
+            <!-- ----------------------------------------------------------------------------------------- -->
+            <!--begin: Datatable -->
+            <!-- ----------------------------------------------------------------------------------------- -->
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <div class="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded" id="local_data" >
+                    <table id="perfectScrollTable" class="kt-datatable__table" style="display: block; min-height: 300px;">
+                        <thead class="kt-datatable__head">
+                            <tr class="kt-datatable__row" style="left: 0px;">
+                                <th data-field="RecordID" class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check">
+                                    <span style="width: 20px;">
+                                        <label class="kt-checkbox kt-checkbox--single kt-checkbox--all kt-checkbox--solid">
+                                            <input type="checkbox" ng-model="vm.checkedAllItem" ng-change="vm.changeCheckAllItem()">&nbsp;<span></span>
+                                        </label>
+                                    </span>
+                                </th>
+                                <th data-field="OrderID" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Role ID</span>
+                                </th>
+                                <th data-field="Country" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Code</span>
+                                </th>
+                                <th data-field="ShipDate" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Name</span>
+                                </th>
+                                <th data-field="ShipDate" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Description</span>
+                                </th>
+                                <th data-field="Status" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Status</span>
+                                </th>
+                                <th data-field="Status" class="kt-datatable__cell kt-datatable__cell--sort">
+                                    <span style="width: 150px;">Action</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="kt-datatable__body">
+
+                            <tr class="kt-datatable__row kt-datatable__row--hover" style="left: 0px;" ng-repeat="item in vm.lstData">
+                                <td class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check">
+                                    <span style="width: 20px;">
+                                        <label class="kt-checkbox kt-checkbox--single kt-checkbox--solid">
+                                            <input type="checkbox" ng-model="item.checked" ng-change="vm.changeCheckedItem()">&nbsp;
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </td>
+                                <td data-field="RoleID" class="kt-datatable__cell"><span style="width: 150px;">{{item.id}}</span></td>
+                                <td data-field="Code" class="kt-datatable__cell"><span style="width: 150px;">{{item.code}}</span></td>
+                                <td data-field="Name" class="kt-datatable__cell"><span style="width: 150px;">{{item.name}}</span></td>
+                                <td data-field="Description" class="kt-datatable__cell"><span style="width: 150px;">{{item.description}}</span></td>
+
+                                <td class="kt-datatable__cell--sorted kt-datatable__cell" data-field="Type" data-autohide-disabled="false">
+                                    <span style="width: 150px;" ng-if="item.status == '1'">
+                                        <span class="kt-badge kt-badge--success kt-badge--dot"></span>
+                                        &nbsp;
+                                        <span class="kt-font-success">Hoạt động</span>
+                                    </span>
+                                    <span style="width: 150px;" ng-if="item.status != '1'">
+                                        <span class="kt-badge kt-badge--danger kt-badge--dot"></span>
+                                        &nbsp;
+                                        <span class="kt-font-danger">Không hoạt động</span>
+                                    </span>
+                                </td>
+
+                                <td data-field="Actions" data-autohide-disabled="false" class="kt-datatable__cell">
+                                    <span style="overflow: visible; position: relative; width: 150px;">
+                                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md" ng-click="vm.editItem(item)">
+                                            <i class="la la-edit"></i> 
+                                        </button>
+
+                                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md" ng-click="vm.configItem(item)">
+                                            <i class="la la-cogs"></i> 
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md" ng-click="vm.deleteItem(item)">
+                                            <i class="la la-trash"></i>
+                                        </button>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- ------------------------------------------------------------------------------------------------------ -->
+                    <!-- Paging table -->
+                    <!-- ------------------------------------------------------------------------------------------------------ -->
+                    <div class="kt-datatable__pager kt-datatable--paging-loaded">
+
+                            <ul class="kt-datatable__pager-nav ats-paging" uib-pagination boundary-links="true" total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+    
+                            <div class="kt-datatable__pager-info">
+                                <div class="dropdown bootstrap-select kt-datatable__pager-size" style="width: 60px;"><select
+                                        class="selectpicker kt-datatable__pager-size" title="Select page size" data-width="60px"
+                                        data-selected="10" tabindex="-98">
+                                        <option class="bs-title-option" value=""></option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select><button type="button" class="btn dropdown-toggle btn-light" data-toggle="dropdown"
+                                        role="button" title="Select page size">
+                                        <div class="filter-option">
+                                            <div class="filter-option-inner">
+                                                <div class="filter-option-inner-inner">10</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="dropdown-menu " role="combobox">
+                                        <div class="inner show" role="listbox" aria-expanded="false" tabindex="-1">
+                                            <ul class="dropdown-menu inner show"></ul>
+                                        </div>
+                                    </div>
+                                </div><span class="kt-datatable__pager-detail">Showing 1 - 10 of 100</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- ----------------------------------------------------------------------------------------- -->
+                    <!--end: Datatable -->
+                    <!-- ----------------------------------------------------------------------------------------- -->
+            </div>
+        </div>
+    </div>
+</div>
+

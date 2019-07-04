@@ -1,0 +1,72 @@
+
+<div class="kt-header__topbar" >
+
+    <!--begin: Language bar -->
+    <div class="kt-header__topbar-item kt-header__topbar-item--langs">
+        <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+            <span class="kt-header__topbar-icon">
+                <img class="" src="./content/images/media/flags/020-flag.svg" alt="" />
+            </span>
+        </div>
+        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
+            <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+                <li class="kt-nav__item kt-nav__item--active">
+                    <a href="#" class="kt-nav__link">
+                        <span class="kt-nav__link-icon"><img src="./content/images/media/flags/020-flag.svg" alt="" /></span>
+                        <span class="kt-nav__link-text">English</span>
+                    </a>
+                </li>
+                <li class="kt-nav__item">
+                    <a href="#" class="kt-nav__link">
+                        <span class="kt-nav__link-icon"><img src="./content/images/media/flags/016-spain.svg" alt="" /></span>
+                        <span class="kt-nav__link-text">Spanish</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--end: Language bar -->
+
+    <!--begin: User Bar -->
+    <div class="kt-header__topbar-item kt-header__topbar-item--user">
+        <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
+            <div class="kt-header__topbar-user">
+                <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
+                <span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
+                <img class="kt-hidden" alt="Pic" src="./content/assets/media/users/300_25.jpg" />
+
+                <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>
+            </div>
+        </div>
+        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround ats-dropdown">
+
+            <!--begin: Navigation -->
+            <div class="kt-notification">
+                <a ui-sref="settings" class="kt-notification__item">
+                    <div class="kt-notification__item-details">
+                        <div class="kt-notification__item-title kt-font-bold">
+                            My Profile
+                        </div>
+                    </div>
+                </a>
+                <a ui-sref="system-log" class="kt-notification__item">
+                    <div class="kt-notification__item-details">
+                        <div class="kt-notification__item-title kt-font-bold">
+                            System log
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-footer">
+                    <button class="btn btn-label-brand btn-sm btn-bold" ng-click="vm.logout()">
+                        <i class="la la-share-square"></i>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+
+            <!--end: Navigation -->
+        </div>
+    </div>
+    <!--end: User Bar -->
+</div>
