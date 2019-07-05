@@ -94,8 +94,8 @@
         function editItem(item){
             $uibModal.open({
                 animation: true,
-                templateUrl: 'app/entities/devices-group/devices-group.edit.html',
-                controller: 'DeviceGroupEditController',
+                templateUrl: 'app/entities/legislation/legislation.edit.html',
+                controller: 'LegislationEditController',
                 controllerAs: 'vm',
                 size: 'xl',
                 resolve: {
@@ -109,8 +109,8 @@
         function addNewItem(){
             $uibModal.open({
                 animation: true,
-                templateUrl: 'app/entities/devices-group/devices-group.edit.html',
-                controller: 'DeviceGroupEditController',
+                templateUrl: 'app/entities/legislation/legislation.edit.html',
+                controller: 'LegislationEditController',
                 controllerAs: 'vm',
                 size: 'xl',
                 resolve: {
@@ -124,8 +124,8 @@
         function deleteItem(item){
             $uibModal.open({
                 animation: true,
-                templateUrl: 'app/entities/devices-group/devices-group.delete.html',
-                controller: 'DeviceGroupDeleteController',
+                templateUrl: 'app/entities/legislation/legislation.delete.html',
+                controller: 'LegislationDeleteController',
                 controllerAs: 'vm',
                 size: 'md',
                 resolve: {

@@ -4,7 +4,7 @@
             <div class="kt-portlet__head kt-portlet__head--lg">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Danh sách thiết bị
+                        Danh sách Industry
                     </h3>
                 </div>
                 <div class="kt-portlet__head-toolbar">
@@ -34,7 +34,7 @@
                 <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
                     <div class="row align-items-center">
                         <div class="col-xl-12 order-2 order-xl-1">
-                            <div class="row align-items-center">
+                            <div class="row">
 
                                 <div class="col-md-3">
                                     <div class="kt-form__group">
@@ -42,7 +42,7 @@
                                             <label>Tìm kiếm:</label>
                                         </div>
                                         <div class="kt-form__control kt-input-icon kt-input-icon--left">
-                                            <input type="text" class="form-control" placeholder="Search..." id="generalSearch" ng-model=vm.searchData.text>
+                                            <input type="text" class="form-control" placeholder="Search..." id="generalSearch" ng-model=vm.searchData.name>
                                             <span class="kt-input-icon__icon kt-input-icon__icon--left">
                                                 <span><i class="la la-search"></i></span>
                                             </span>
@@ -52,49 +52,17 @@
 
                                 <div class="col-md-3">
                                     <div class="kt-form__group">
-                                        <div class="kt-form__label">
-                                            <label>Trạng thái:</label>
-                                        </div>
-                                        <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_status" ng-model="vm.searchData.status">
-                                                <option value="{{item.value}}" ng-repeat="item in vm.lstStatus">{{item.title}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <div class="kt-form__control kt-form__control_btn">
+                                            <button type="button" class="btn btn-brand btn-icon-sm" ng-click="vm.searchIndustry()"  style="min-width:100px">
+                                                <i class="la la-search"></i> 
+                                                Search
+                                            </button>
 
-                                <div class="col-md-3">
-                                    <div class="kt-form__group">
-                                        <div class="kt-form__label">
-                                            <label>Loại thiết bị:</label>
+                                            <button type="button" class="btn btn-brand btn-icon-sm" ng-click="vm.clearSearch()" style="min-width:100px">
+                                                <i class="la la-ban"></i> 
+                                                Clear
+                                            </button>
                                         </div>
-                                        <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_type" ng-model="vm.searchData.type">
-                                                <option value="{{item.value}}" ng-repeat="item in vm.lstDeviceType">{{item.title}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-3">
-                                    <div class="kt-form__group">
-                                        <div class="kt-form__label">
-                                            <label>Nhóm thiết bị:</label>
-                                        </div>
-                                        <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_type" ng-model="vm.searchData.group">
-                                                <option value="{{item.value}}" ng-repeat="item in vm.lstDeviceGroup">{{item.title}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-3">
-                                    <div class="kt-form__group">
-                                        <button type="button" class="btn btn-brand btn-icon-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="la la-search"></i> 
-                                            Search
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -121,16 +89,13 @@
                                     </span>
                                 </th>
                                 <th data-field="ID" class="kt-datatable__cell kt-datatable__cell--sort">
-                                    <span style="width: 100px;">ID</span>
+                                    <span style="width: 100px;">Code</span>
                                 </th>
                                 <th data-field="code" class="kt-datatable__cell kt-datatable__cell--sort">
-                                    <span style="width: 182px;">Mã thiết bị</span>
+                                    <span style="width: 182px;">Industry Name</span>
                                 </th>
                                 <th data-field="name" class="kt-datatable__cell kt-datatable__cell--sort">
-                                    <span style="width: 182px;">Tên thiết bị</span>
-                                </th>
-                                <th data-field="name-device-group" class="kt-datatable__cell kt-datatable__cell--sort">
-                                    <span style="width: 182px;">Tên nhóm thiết bị</span>
+                                    <span style="width: 182px;">Title</span>
                                 </th>
                                 <th data-field="Actions" data-autohide-disabled="false" class="kt-datatable__cell kt-datatable__cell--sort">
                                     <span style="width: 110px;">Hành động</span>
@@ -148,16 +113,9 @@
                                         </label>
                                     </span>
                                 </td>
-                                <td data-field="ID" class="kt-datatable__cell"><span style="width: 100px;">{{item.ID}}</span></td>
-                                <td data-field="code" class="kt-datatable__cell"><span style="width: 182px;">{{item.Code}}</span></td>
+                                <td data-field="code" class="kt-datatable__cell"><span style="width: 100px;">{{item.Code}}</span></td>
                                 <td data-field="name" class="kt-datatable__cell"><span style="width: 182px;">{{item.Name}}</span></td>
                                 <td data-field="name-device-group" class="kt-datatable__cell"><span style="width: 182px;">{{item.Title}}</span></td>
-                                <!-- <td data-field="status" class="kt-datatable__cell">
-                                    <span style="width: 110px;">
-                                        <span ng-if="item.isActive == 0" class="kt-font-danger">Không hoạt động</span>
-                                        <span ng-if="item.isActive == 1" class="kt-font-success">Hoạt động</span>
-                                    </span>
-                                </td> -->
 
                                 <td data-field="align-items-centertions" data-autohide-disabled="false" class="kt-datatable__cell">
                                     <span style="overflow: visible; position: relative; width: 110px;">

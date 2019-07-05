@@ -1,0 +1,39 @@
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update industry</h5>
+        <button type="button" class="close" ng-click="vm.cancel()">
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-md-12 kt-margin-b-20-tablet-and-mobile">
+
+                    <div class="form-group">
+                        <label for="code-industry" class="form-control-label required">Industy Code</label>
+                        <input type="text" class="form-control" id="code-industry" ng-model="vm.dataItem.Code" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name-text" class="form-control-label required">Industy Name:</label>
+                        <input type="text" class="form-control" id="name-industry" ng-model="vm.dataItem.Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="manudate" class="form-control-label">Title:</label>
+                        <textarea class="form-control" id="title-industry" rows="5" ng-model="vm.dataItem.Title"></textarea>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-if="!vm.showAddNew"> <i class="la la-save"></i>Update</button>
+        <button type="button" class="btn btn-primary" ng-if="vm.showAddNew"> <i class="la la-plus"></i>Add new</button>
+        <button type="button" class="btn btn-secondary" ng-click="vm.cancel()"><i class="la la-ban"></i>Close</button>
+    </div>
+</div>

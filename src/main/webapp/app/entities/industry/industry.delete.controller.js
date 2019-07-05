@@ -3,11 +3,11 @@
 
     angular
         .module('atSolApp')
-        .controller('DeviceDeleteController', DeviceDeleteController);
+        .controller('IndustryDeleteController', IndustryDeleteController);
 
-    DeviceDeleteController.$inject = ['$scope', '$uibModalInstance', 'dataItem'];
+    IndustryDeleteController.$inject = ['$scope', '$uibModalInstance', 'dataItem', 'AtsAlertService'];
 
-    function DeviceDeleteController ($scope, $uibModalInstance, dataItem) {
+    function IndustryDeleteController ($scope, $uibModalInstance, dataItem, AtsAlertService) {
         var vm = this;
         
         vm.dataItem = dataItem;
@@ -18,11 +18,12 @@
         init();
 
         function init(){
-            console.log('init delete devices');
+            console.log('init delete industry');
         }
 
         function deleteItem(){
             $uibModalInstance.close();
+            AtsAlertService.success('Insdustry is deleted');
         }
 
         function cancel(){

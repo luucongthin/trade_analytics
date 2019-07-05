@@ -8110,6 +8110,10 @@ a.text-dark:hover, a.text-dark:focus {
   .form-group label {
     font-size: 1rem;
     font-weight: 400; }
+  .form-group label.required:after {
+    content: ' *';
+    color: red
+  }
   .form-group .invalid-feedback,
   .form-group .valid-feedback {
     font-weight: 400; }

@@ -3,12 +3,12 @@
 
     angular
         .module('atSolApp')
-        .factory('DeviceGroupServices', DeviceGroupServices);
+        .factory('LegislationServices', LegislationServices);
 
-    DeviceGroupServices.$inject = ['$resource'];
+    LegislationServices.$inject = ['$resource'];
 
-    function DeviceGroupServices ($resource) {
-        var service = $resource('api/device-group', {}, {
+    function LegislationServices ($resource) {
+        var service = $resource('api/legislation', {}, {
             'get': { method: 'GET', params: {}, isArray: false,
                 interceptor: {
                     response: function(response) {

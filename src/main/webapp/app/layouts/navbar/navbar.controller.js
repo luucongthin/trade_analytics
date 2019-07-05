@@ -22,19 +22,19 @@
             },
             {
                 id: 1,
-                text: 'Quản lý thiết bị',
+                text: 'Quản lý Industry',
                 icon: 'fa fa-server',
                 subItems:[
                     {
                         id: 12,
-                        link: 'devices-group',
-                        text: 'Nhóm thiết bị',
+                        link: 'industry',
+                        text: 'Industry',
                         icon: 'fa fa-cubes'
                     },
                     {
                         id: 11,
-                        link: 'devices',
-                        text: 'Thiết bị',
+                        link: 'legislation',
+                        text: 'Legislation',
                         icon: 'fa fa-microchip'
                     }
                 ]

@@ -3,11 +3,11 @@
 
     angular
         .module('atSolApp')
-        .factory('DeviceServices', DeviceServices);
+        .factory('IndustryServices', IndustryServices);
 
-    DeviceServices.$inject = ['$resource'];
+    IndustryServices.$inject = ['$resource'];
 
-    function DeviceServices ($resource) {
+    function IndustryServices ($resource) {
         var service = $resource('api/categories/:pathMethod', {}, {
             'get': {
                 method: 'GET',
