@@ -5,15 +5,16 @@
         .module('atSolApp')
         .controller('IndustryEditController', IndustryEditController);
 
-    IndustryEditController.$inject = ['$scope', '$uibModalInstance', 'dataItem', 'APP_CONSTANTS'];
+    IndustryEditController.$inject = ['$scope', '$uibModalInstance', 'dataItem', 'APP_CONSTANTS', 'IndustryServices', 'AtsAlertService'];
 
-    function IndustryEditController ($scope, $uibModalInstance, dataItem, APP_CONSTANTS) {
+    function IndustryEditController ($scope, $uibModalInstance, dataItem, APP_CONSTANTS, IndustryServices, AtsAlertService) {
         var vm = this;
 
         vm.showAddNew = false;
         
         vm.cancel = cancel;
         vm.update = update; 
+        vm.addNew = addNew;
         vm.dataItem = angular.copy(dataItem);
         
         vm.lstStatus = [];
@@ -25,7 +26,7 @@
         init();
 
         function init(){
-            console.log('init industry.edit.controller');
+            //console.log('init industry.edit.controller');
 
             if(vm.dataItem == null){
                 vm.showAddNew = true;
@@ -35,7 +36,43 @@
         }
 
         function update(){
-            $uibModalInstance.close();
+
+            IndustryServices.update({
+                    pathMethod: 'update'
+                }, {
+                    id: vm.dataItem.ID,
+                    name: vm.dataItem.Name != '' ? vm.dataItem.Name : null,
+                    title: vm.dataItem.Title != '' ? vm.dataItem.Title : null,
+                    code: vm.dataItem.Code != '' ? vm.dataItem.Code : null,
+                }, function (data) {
+                    //$state.go('industry', {}, { reload: true });
+                    $uibModalInstance.close();
+                });
+        }
+
+        function addNew(){
+            try{
+                IndustryServices.update({
+                    pathMethod: 'create'
+                }, {
+                    name: vm.dataItem.Name != '' ? vm.dataItem.Name : null,
+                    title: vm.dataItem.Title != '' ? vm.dataItem.Title : null,
+                    code: vm.dataItem.Code != '' ? vm.dataItem.Code : null,
+                }, function (data) {
+                    $uibModalInstance.close();
+                    AtsAlertService.success('Industry is created');
+                }, function (error){
+                    AtsAlertService.error('Industry create fail');
+                    $uibModalInstance.close();
+                });
+            }
+            catch(error){
+                AtsAlertService.error(error);
+            }
+            finally{
+                $uibModalInstance.close();
+            }
+            
         }
 
         function cancel(){

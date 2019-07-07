@@ -14,6 +14,10 @@
             },
             'update': {
                 method: 'POST',
+                params:{
+                    id: null,
+                    category_code: null
+                }
             },
             'save': {
                 method: 'POST',

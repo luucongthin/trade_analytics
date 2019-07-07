@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <label for="code-industry" class="form-control-label required">Industy Code</label>
-                        <input type="text" class="form-control" id="code-industry" ng-model="vm.dataItem.Code" disabled>
+                        <input type="text" class="form-control" id="code-industry" ng-model="vm.dataItem.Code">
                     </div>
 
                     <div class="form-group">
@@ -32,8 +32,8 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-if="!vm.showAddNew"> <i class="la la-save"></i>Update</button>
-        <button type="button" class="btn btn-primary" ng-if="vm.showAddNew"> <i class="la la-plus"></i>Add new</button>
+        <button type="button" class="btn btn-primary" ng-if="!vm.showAddNew" ng-click="vm.update()"> <i class="la la-save"></i>Update</button>
+        <button type="button" class="btn btn-primary" ng-if="vm.showAddNew" ng-click="vm.addNew()"> <i class="la la-plus"></i>Add new</button>
         <button type="button" class="btn btn-secondary" ng-click="vm.cancel()"><i class="la la-ban"></i>Close</button>
     </div>
 </div>

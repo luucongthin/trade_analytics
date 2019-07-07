@@ -6,9 +6,9 @@
         .module('atSolApp')
         .controller('IndustryController', IndustryController);
 
-    IndustryController.$inject = ['$scope', '$uibModal', '$state', 'IndustryServices'];
+    IndustryController.$inject = ['$scope', '$uibModal', '$state', 'IndustryServices', 'AtsAlertService'];
 
-    function IndustryController ($scope, $uibModal, $state, IndustryServices) {
+    function IndustryController ($scope, $uibModal, $state, IndustryServices, AtsAlertService) {
         var vm = this;
 
         vm.checkedAllItem = false;
@@ -73,7 +73,7 @@
         }
 
         function addNewItem(){
-            $uibModal.open({
+            var addNewModal = $uibModal.open({
                 animation: true,
                 templateUrl: 'app/entities/industry/industry.edit.html',
                 controller: 'IndustryEditController',
@@ -85,10 +85,16 @@
                   }
                 }
             });
+
+            addNewModal.result.then(function (data) {
+                init();
+            }, function (error) {
+                console.log('error', error);
+            });
         }
 
         function deleteItem(item){
-            $uibModal.open({
+            var deleteModel = $uibModal.open({
                 animation: true,
                 templateUrl: 'app/entities/industry/industry.delete.html',
                 controller: 'IndustryDeleteController',
@@ -99,6 +105,12 @@
                     return item;
                   }
                 }
+            });
+
+            deleteModel.result.then(function (data) {
+                init();
+            }, function (error) {
+                console.log('error', error);
             });
         }
 
